@@ -35,7 +35,6 @@ $ifs_auth_array[] = array(
 );
 */
 
-
 $ifs_categories_table = 'phpbb_ifs_categories';
 $ifs_categories_array = array();
 /*

@@ -3,9 +3,9 @@
 *
 * @author michaelo phpbbireland@gmail.com - http://www.phpbbireland.com
 *
-* @package sgp
-* @version 1.0.22
-* @copyright (c) 2005-2011 Michael O'Toole (phpbbireland.com)
+* @package IFS (IntegraFileShare)
+* @version 1.0.0
+* @copyright (c) 2014 Michael O'Toole (phpbbireland.com)
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
@@ -16,8 +16,7 @@
 define('UMIL_AUTO', true);
 define('IN_PHPBB', true);
 
-// correct root for poral as we install using root/portal/index.php //
-
+// correct root for install using root/install/index.php //
 $phpbb_root_path = './../';
 
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
@@ -282,7 +281,6 @@ $versions = array(
 				),
 			),
 
-
 			array('ucp', '0', 'UCP_IFS_USER'),
 			array('ucp', 'UCP_IFS_USER', array(
 					'module_basename'	=> 'ifs',
@@ -290,7 +288,6 @@ $versions = array(
 					'module_auth'		=> 'u_ifs',
 				),
 			),
-
 		),
 
 		'table_insert' => array(
@@ -311,7 +308,6 @@ $versions = array(
 	),
 
 );//versions
-
 
 include($phpbb_root_path . 'umil/umil_auto.' . $phpEx);
 
