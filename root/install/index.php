@@ -63,8 +63,7 @@ $versions = array(
 
 			array('phpbb_ifs_auth', array(
 					'COLUMNS' => array(
-						'id'				=> array('UINT', NULL, 'auto_increment'),
-						'group_id'			=> array('UINT', '0'),
+						'group_id'			=> array('UINT', NULL, 'auto_increment'),
 						'cat_id'			=> array('UINT', '0'),
 						'auth_view'			=> array('BOOL', '1'),
 						'auth_read'			=> array('BOOL', '1'),
@@ -77,7 +76,7 @@ $versions = array(
 						'auth_email'		=> array('BOOL', '1'),
 						'auth_v_comment'	=> array('BOOL', '1'),
 						'auth_p_comment'	=> array('BOOL', '1'),
-						'auth_e_commen'		=> array('BOOL', '1'),
+						'auth_e_comment'	=> array('BOOL', '1'),
 						'auth_d_comment'	=> array('BOOL', '1'),
 						'auth_mod'			=> array('BOOL', '1'),
 						'auth_search'		=> array('BOOL', '1'),
@@ -92,34 +91,39 @@ $versions = array(
 				),
 			),
 
-			array('phpbb_ifs_cat_table', array(
+			array('phpbb_ifs_categories', array(
 					'COLUMNS'	=> array(
 						'cat_id'				=> array('UINT', NULL, 'auto_increment'),
+						'cat_parent'			=> array('UINT', '0'),
+
 						'cat_name'				=> array('VCHAR', ''),
 						'cat_desc'				=> array('VCHAR', ''),
-						'cat_parent'			=> array('UINT:50', '0'),
-						'parents_data'			=> array('VCHAR', ''),
-						'cat_order'				=> array('UINT:50', '0'),
-						'cat_allow_file'		=> array('TINT:2', '0'),
-						'cat_allow_ratings'		=> array('TINT:2', '0'),
-						'cat_allow_comments'	=> array('TINT:2', '0'),
-						'cat_files'				=> array('UINT', '0'),
+						'cat_parents_data'		=> array('VCHAR', ''),
+
+						'cat_order'				=> array('UINT', '0'),
+						'cat_files'				=> array('INT:8', '0'),
+
 						'cat_last_file_id'		=> array('UINT', '0'),
-						'cat_last_file_name'	=> array('VCHAR', ''),
 						'cat_last_file_time'	=> array('UINT:50', '0'),
-						'auth_view'				=> array('TINT:2', '0'),
-						'auth_read'				=> array('TINT:2', '0'),
-						'auth_view_file'		=> array('TINT:2', '0'),
+						'cat_last_file_name'	=> array('VCHAR', ''),
+
+						'cat_allow_file'		=> array('BOOL', '0'),
+						'cat_allow_ratings'		=> array('BOOL', '0'),
+						'cat_allow_comments'	=> array('BOOL', '0'),
+
+						'auth_view'				=> array('BOOL', '0'),
+						'auth_read'				=> array('BOOL', '0'),
+						'auth_view_file'		=> array('BOOL', '0'),
 						'auth_edit_file'		=> array('BOOL', '0'),
 						'auth_delete_file'		=> array('BOOL', '0'),
-						'auth_upload'			=> array('TINT:2', '0'),
-						'auth_download'			=> array('TINT:2', '0'),
-						'auth_rate'				=> array('TINT:2', '0'),
-						'auth_email'			=> array('TINT:2', '0'),
-						'auth_v_comment'		=> array('TINT:2', '0'),
-						'auth_p_comment'		=> array('TINT:2', '0'),
-						'auth_e_comment'		=> array('TINT:2', '0'),
-						'auth_d_comment'		=> array('TINT:2', '0'),
+						'auth_upload'			=> array('BOOL', '0'),
+						'auth_download'			=> array('BOOL', '0'),
+						'auth_rate'				=> array('BOOL', '0'),
+						'auth_email'			=> array('BOOL', '0'),
+						'auth_v_comment'		=> array('BOOL', '0'),
+						'auth_p_comment'		=> array('BOOL', '0'),
+						'auth_e_comment'		=> array('BOOL', '0'),
+						'auth_d_comment'		=> array('BOOL', '0'),
 					),
 					'PRIMARY_KEY'	=> 'cat_id',
 				),
@@ -146,12 +150,8 @@ $versions = array(
 					'COLUMNS'	=> array(
 						'config_name'		=> array('VCHAR', ''),
 						'config_value'		=> array('VCHAR', ''),
-						'is_dynamic'		=> array('BOOL', '0'),
 					),
 					'PRIMARY_KEY'	=> 'config_name',
-					'KEYS'			=> array(
-						'is_dynamic'	=> array('INDEX', 'is_dynamic'),
-					),
 				),
 			),
 
@@ -171,18 +171,18 @@ $versions = array(
 
 			array('phpbb_ifs_customdata', array(
 				'COLUMNS'	=> array(
-					'customdata_file'	=> array('UINT:50','0'),
-					'customdata_custom'	=> array('UINT:50','0'),
-					'data'				=> array('VCHAR', ''),
+					'customdata_file'		=> array('UINT:50', '0'),
+					'customdata_custom'		=> array('UINT:50', '0'),
+					'data'					=> array('VCHAR', ''),
 					),
 				),
 			),
 
-			array('phpbb_ifs_download_info', array(
+			array('phpbb_ifs_download', array(
 				'COLUMNS'	=> array(
 					'file_id'				=> array('UINT', '0'),
 					'user_id'				=> array('UINT', '0'),
-					'downloader_ip'			=> array('VCHAR:8', ''),
+					'downloader_ip'			=> array('VCHAR:16', ''),
 					'downloader_os'			=> array('VCHAR', ''),
 					'downloader_browser'	=> array('VCHAR', ''),
 					'browser_version'		=> array('VCHAR', ''),
@@ -194,7 +194,7 @@ $versions = array(
 				'COLUMNS'	=> array(
 					'file_id'				=> array('UINT:10', NULL, 'auto_increment'),
 					'user_id'				=> array('UINT', '0'),
-					'poster_ip'				=> array('UINT', '0'),
+					'poster_ip'				=> array('VCHAR:16', ''),
 					'file_name'				=> array('VCHAR', ''),
 					'file_size'				=> array('UINT:20', '0'),
 					'unique_name'			=> array('VCHAR:100', ''),
@@ -206,7 +206,7 @@ $versions = array(
 					'file_longdesc'			=> array('VCHAR', ''),
 					'file_ssurl'			=> array('VCHAR', ''),
 					'file_sshot_link'		=> array('TINT:2', '0'),
-					'file_dlurl varchar'	=> array('VCHAR', ''),
+					'file_dlurl'	        => array('VCHAR', ''),
 					'file_time'				=> array('UINT:50', '0'),
 					'file_update_time'		=> array('UINT:50', '0'),
 					'file_catid'			=> array('UINT:10', '0'),
@@ -252,42 +252,46 @@ $versions = array(
 
 		'module_add' => array(
 			//array('acp', '0', 'ACP_CAT_PORTAL'),
-			array('acp', 'ACP_CAT_PORTAL', 'ACP_IFS_CAT_MANAGER'),
-			array('acp', 'ACP_CAT_PORTAL', 'ACP_IFS_CONFIG'),
-			array('acp', 'ACP_CAT_PORTAL', 'ACP_IFS_CUSTOM_FIELDS'),
-			array('acp', 'ACP_CAT_PORTAL', 'ACP_IFS_FILE_MAINTENANCE'),
-			array('acp', 'ACP_CAT_PORTAL', 'ACP_IFS_LICENSES'),
-			array('acp', 'ACP_CAT_PORTAL', 'ACP_IFS_PERMISSIONS'),
+			array('acp', 'ACP_CAT_PORTAL', 'ACP_IFS'),
 
-			array('acp', 'ACP_IFS_CAT_MANAGER',	array(
-					'module_basename' => 'ifs_cat_manage',
+			array('acp', 'ACP_IFS',	array(
+					'module_basename' => 'ifs',
 				),
 			),
-			array('acp', 'ACP_IFS_CONFIG',	array(
+			array('acp', 'ACP_IFS',	array(
 					'module_basename' => 'ifs_config',
 				),
 			),
-			array('acp', 'ACP_IFS_CUSTOM_FIELDS',	array(
-					'module_basename' => 'ifs_custom_fields',
+			array('acp', 'ACP_IFS',	array(
+					'module_basename' => 'ifs_categories',
 				),
 			),
-			array('acp', 'ACP_IFS_FILE_MAINTENANCE',	array(
-					'module_basename' => 'ifs_file_maintenance',
-				),
-			),
-			array('acp', 'ACP_IFS_LICENSES',	array(
-					'module_basename' => 'ifs_licenses',
-				),
-			),
-			array('acp', 'ACP_IFS_PERMISSIONS',	array(
+			array('acp', 'ACP_IFS',	array(
 					'module_basename' => 'ifs_permissions',
 				),
 			),
+			array('acp', 'ACP_IFS',	array(
+					'module_basename' => 'ifs_custom_fields',
+				),
+			),
+			array('acp', 'ACP_IFS',	array(
+					'module_basename' => 'ifs_files',
+				),
+			),
+			array('acp', 'ACP_IFS',	array(
+					'module_basename' => 'ifs_licenses',
+				),
+			),
+			array('acp', 'ACP_IFS',	array(
+					'module_basename' => 'ifs_mirrors',
+				),
+			),
+
 
 			array('ucp', '0', 'UCP_IFS_USER'),
 			array('ucp', 'UCP_IFS_USER', array(
-					'module_basename'	=> 'ifs_config',
-					'modes'				=> array('add', 'edit', 'delete', 'info'),
+					'module_basename'	=> 'ifs',
+					'modes'				=> array('info'),
 					'module_auth'		=> 'u_ifs',
 				),
 			),
@@ -296,12 +300,12 @@ $versions = array(
 
 		'table_insert' => array(
 			array($ifs_auth_table,			$ifs_auth_array),
-			array($ifs_cat_table,			$ifs_cat_array),
+			array($ifs_categories_table,	$ifs_categories_array),
 			array($ifs_comments_table,		$ifs_comments_array),
 			array($ifs_config_table,		$ifs_config_array),
 			array($ifs_custom_table,		$ifs_custom_array),
 			array($ifs_customdata_table,	$ifs_customdata_array),
-			array($ifs_download_info_table,	$ifs_download_info_array),
+			array($ifs_download_table,		$ifs_download_array),
 			array($ifs_files_table,			$ifs_files_array),
 			array($ifs_license_table,		$ifs_license_array),
 			array($ifs_mirrors_table,		$ifs_mirrors_array),
