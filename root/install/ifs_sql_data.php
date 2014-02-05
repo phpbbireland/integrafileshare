@@ -8,7 +8,9 @@ if (!defined('IN_PHPBB')) // keep mpv happy
 	exit;
 }
 
-$ifs_auth_table = 'phpbb_ifs_auth_tabe';
+$ifs_auth_table = 'phpbb_ifs_auth';
+$ifs_auth_array = array();
+/*
 $ifs_auth_array[] = array(
 	'group_id'			=> '0',
 	'cat_id'			=> '0',
@@ -31,38 +33,45 @@ $ifs_auth_array[] = array(
 	'auth_toplist'		=> '1',
 	'auth_viewall'		=> '1',
 );
+*/
 
-$ifs_cat_table = 'phpbb_ifs_cat_table';
-$ifs_cat_array[] = array(
-	'cat_id'				=> '0',
-	'cat_name'				=> '0',
-	'cat_desc'				=> '0',
+
+$ifs_categories_table = 'phpbb_ifs_categories';
+$ifs_categories_array = array();
+/*
+$ifs_categories_array[] = array(
+	'cat_id'				=> '1',
+	'cat_name'				=> 'Test',
+	'cat_desc'				=> 'Test',
 	'cat_parent'			=> '0',
-	'parents_data'			=> '0',
-	'cat_order'				=> '0',
-	'cat_allow_file'		=> '0',
-	'cat_allow_ratings'		=> '0',
-	'cat_allow_comments'	=> '0',
-	'cat_files mediumint'	=> '0',
+	'cat_parents_data'		=> '',
+	'cat_order'				=> '1',
+	'cat_allow_file'		=> '1',
+	'cat_allow_ratings'		=> '1',
+	'cat_allow_comments'	=> '1',
+	'cat_files'	            => '0',
 	'cat_last_file_id'		=> '0',
-	'cat_last_file_name'	=> '0',
+	'cat_last_file_name'	=> 'test',
 	'cat_last_file_time'	=> '0',
-	'auth_view tinyint'		=> '0',
-	'auth_read tinyint'		=> '0',
-	'auth_view_file'		=> '0',
-	'auth_edit_file'		=> '0',
-	'auth_delete_file'		=> '0',
-	'auth_upload'			=> '0',
-	'auth_download'			=> '0',
-	'auth_rate'				=> '0',
-	'auth_email'			=> '0',
-	'auth_view_comment'		=> '0',
-	'auth_post_comment'		=> '0',
-	'auth_edit_comment'		=> '0',
-	'auth_delete_comment'	=> '0',
+	'auth_view'				=> '1',
+	'auth_read'				=> '1',
+	'auth_view_file'		=> '1',
+	'auth_edit_file'		=> '1',
+	'auth_delete_file'		=> '1',
+	'auth_upload'			=> '1',
+	'auth_download'			=> '1',
+	'auth_rate'				=> '1',
+	'auth_email'			=> '1',
+	'auth_v_comment'		=> '1',
+	'auth_p_comment'		=> '1',
+	'auth_e_comment'		=> '1',
+	'auth_d_comment'	    => '1',
 );
+*/
 
-$ifs_comments_table = 'phpbb_ifs_comments_table';
+$ifs_comments_table = 'phpbb_ifs_comments';
+$ifs_comments_array = array();
+/*
 $ifs_comments_array[] = array(
   'comments_id'			=> '0',
   'file_id'				=> '0',
@@ -72,213 +81,192 @@ $ifs_comments_array[] = array(
   'comment_bbcode_uid'	=> '0',
   'poster_id'			=> '0',
 );
-
+*/
 
 $ifs_config_table = 'phpbb_ifs_config';
+$ifs_config_array = array();
+
 $ifs_config_array[] = array(
   'config_name'		=> '',
   'config_value'	=> ''
 );
-
 $ifs_config_array[] = array(
 	'config_name'	=> 'allow_bbcode',
 	'config_value'	=> '1',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'allow_comment_images',
 	'config_value'	=> '1',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'allow_comment_links',
 	'config_value'	=> '1',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'allow_html',
 	'config_value'	=> '0',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'allow_smilies',
 	'config_value'	=> '1',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'auth_search',
 	'config_value'	=> '0',
-	'is_dynamic'	=> '1',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'auth_stats',
 	'config_value'	=> '1',
-	'is_dynamic'	=> '0',
 );
 $_config_array[] = array(
 	'config_name'	=> 'auth_toplist',
 	'config_value'	=> '1',
-	'is_dynamic'	=> '0',
 );
-
 $ifs_config_array[] = array(
 	'config_name'	=> 'auth_viewall',
 	'config_value'	=> '0',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'forbidden_extensions',
 	'config_value'	=> '0',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'php, php3, php4, phtml, pl, asp, aspx, cgi',
 	'config_value'	=> '400',
-	'is_dynamic'	=> '0',
 );
-
 $ifs_config_array[] = array(
 	'config_name'	=> 'hotlink_allowed',
 	'config_value'	=> '0',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'hotlink_prevent',
 	'config_value'	=> '1',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'max_comment_chars',
 	'config_value'	=> '5000',
-	'is_dynamic'	=> '1',
+
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'max_file_size',
 	'config_value'	=> '262144',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'no_comment_image_message',
 	'config_value'	=> '5',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> '[NO_IMAGE_PLEASE]',
 	'config_value'	=> '',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'no_comment_link_message',
 	'config_value'	=> '[NO_LINKS_PLEASE]',
-	'is_dynamic'	=> '0',
 );
 
 $ifs_config_array[] = array(
 	'config_name'	=> 'pm_notify',
 	'config_value'	=> '0',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'screenshots_dir',
 	'config_value'	=> 'ifs/images/ss/',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'settings_dbdescription',
 	'config_value'	=> '',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'settings_dbname',
 	'config_value'	=> '[DOWNLOAD_DATABASE]',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'settings_disable',
 	'config_value'	=> '0',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'settings_file_page',
 	'config_value'	=> '20',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'settings_newdays',
 	'config_value'	=> '7',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'settings_stats',
 	'config_value'	=> '',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'settings_topnumber',
 	'config_value'	=> '10',
-	'is_dynamic'	=> '0',
+
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'settings_viewall',
 	'config_value'	=> '1',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'sort_method',
 	'config_value'	=> 'file_time',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'sort_order',
 	'config_value'	=> 'DESC',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'tpl_php',
 	'config_value'	=> '0',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'upload_dir',
 	'config_value'	=> 'ifs/uploads/',
-	'is_dynamic'	=> '0',
 );
 $ifs_config_array[] = array(
 	'config_name'	=> 'validator',
 	'config_value'	=> 'validator_mod',
-	'is_dynamic'	=> '0',
 );
 
 
 $ifs_custom_table = 'phpbb_ifs_custom';
+$ifs_custom_array = array();
+/*
 $ifs_custom_array[] = array(
-	'custom_id'				=> '',
+	'custom_id'				=> '0',
 	'custom_name'			=> '',
 	'custom_description'	=> '',
 	'data'					=> '',
-	'field_order'			=> '',
-	'field_type'			=> '',
+	'field_order'			=> '0',
+	'field_type'			=> '0',
 	'regex'					=> '',
 );
+*/
 
 $ifs_customdata_table = 'phpbb_ifs_customdata';
+$ifs_customdata_array = array();
+/*
 $ifs_customdata_array[] = array(
-	'customdata_file'	=> '',
-	'customdata_custom'	=> '',
+	'customdata_file'	=> '0',
+	'customdata_custom'	=> '0',
 	'data'				=> '',
 );
+*/
 
-$ifs_download_info_table = 'phpbb_ifs_download_info';
-$ifs_download_info_array[] = array(
+$ifs_download_table = 'phpbb_ifs_download';
+$ifs_download_array = array();
+/*
+$ifs_download_array[] = array(
 	'file_id'				=> '0',
 	'user_id'				=> '0',
-	'downloader_ip'			=> '0',
-	'downloader_os'			=> ' ',
-	'downloader_browser'	=> ' ',
-	'browser_version'		=> ' ',
+	'downloader_ip'			=> '',
+	'downloader_os'			=> '',
+	'downloader_browser'	=> '',
+	'browser_version'		=> '',
 );
+*/
 
 $ifs_files_table = 'phpbb_ifs_files';
+$ifs_files_array = array();
+/*
 $ifs_files_array[] = array(
 	'file_id'			=> '0',
 	'user_id'			=> '0',
@@ -307,15 +295,21 @@ $ifs_files_array[] = array(
 	'file_approved'		=> '1',
 	'file_broken'		=> '0',
 );
+*/
 
 $ifs_license_table = 'phpbb_ifs_license';
+$ifs_license_array = array();
+/*
 $ifs_license_array[] = array(
 	'license_id'	=> '0',
 	'license_name'	=> '',
 	'license_text'	=> '',
 );
+*/
 
 $ifs_mirrors_table = 'phpbb_ifs_mirrors';
+$ifs_mirrors_array = array();
+/*
 $ifs_mirrors_array[] = array(
 	'mirror_id'			=> '0',
 	'file_id'			=> '0',
@@ -324,5 +318,6 @@ $ifs_mirrors_array[] = array(
 	'file_dlurl'		=> '',
 	'mirror_location'	=> '',
 );
+*/
 // Finished tables and data ...
 ?>
