@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
+  <header>
+    <license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
+
+	<title lang="en">IFS (IntegraFileShare)</title>
+
+	<description lang="en">IFS is a complete rewrite/update of pafiledb mod for phpBB 3.0.12</description>
+
+    <author-notes lang="en">
+    </author-notes>
+
+    <author-group>
+		<author>
+			<username>michaelo</username>
+			<realname>Michael O'Toole</realname>
+			<homepage>http://www.phpbbireland.com/</homepage>
+			<email>o2l@eircom.net</email>
+		</author>
+    </author-group>
+	<mod-version>1.0.0</mod-version>
+
+	<installation>
+		<level>intermediate</level>
+		<time>1000</time>
+		<target-version>3.0.12</target-version>
+	</installation>
+    <meta name="generator" content="Phpbb.ModTeam.Tools (c#)" />
+  </header>
+
+<action-group>
+<copy>
+      <file from="root/styles/subsilver2/*.*" to="styles/styles/subsilver2/*.*" />
+</copy>
+
+<open src="styles/subsilver2/template/breadcrumbs.html">
+<edit>
+<comment lang="en"></comment>
+<find><![CDATA[	<table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;">
+	<tr>
+		<td class="row1">
+			<p class="breadcrumbs"><!-- IF STARGATE --><a href="{U_PORTAL}">{L_PORTAL}</a> &bull; <!-- ENDIF --><a href="{U_INDEX}">{L_INDEX}</a><!-- BEGIN navlinks --> &#187; <a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a><!-- END navlinks --></p>
+			<p class="datetime">{S_TIMEZONE}</p>
+		</td>
+	</tr>
+	</table>]]></find>
+<action type="replace-with"><![CDATA[	<table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;">
+	<tr>
+		<td class="row1">
+			<p class="breadcrumbs"><!-- IF STARGATE --><a href="{U_PORTAL}">{L_PORTAL}</a> &bull; <!-- ENDIF --><a href="{U_INDEX}">{L_INDEX}</a><!-- BEGIN navlinks --> &#187; <a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a><!-- END navlinks --></p>
+			<p class="datetime">{S_TIMEZONE}</p>
+		</td>
+	</tr>
+	</table>]]></action>
+</edit>
+</open>
+
+
+<diy-instructions lang="en-gb">
+Refresh subsilver2 Templates/Themes/Imagesets...
+</diy-instructions>
+</action-group>
+</mod>
